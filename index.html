@@ -1,67 +1,145 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portafolio Three.js - Entornos 3D</title>
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <link rel="stylesheet" href="main.css">
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Portafolio Three.js - Entornos 3D</title>
+
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="./assets/favicon.png">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- CSS principal -->
+<link rel="stylesheet" href="main.css">
+
 </head>
-<body class="d-flex flex-column vh-100 bg-dark">
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm py-3">
-        <div class="container-fluid px-4">
-            <span class="navbar-brand mb-0 h1 fw-bold text-uppercase" style="letter-spacing: 2px;">
-                Demos 3D
-            </span>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-                <div class="navbar-nav gap-3">
-                    <button class="uiverse-btn" onclick="cambiarDemo('minecraft.html')">
-                        <span>Minecraft</span>
-                    </button>
-                    <button class="uiverse-btn" onclick="cambiarDemo('map.html')">
-                        <span>Map Controls</span>
-                    </button>
-                    <button class="uiverse-btn" onclick="cambiarDemo('orbit.html')">
-                        <span>Orbit Controls</span>
-                    </button>
-                    <button class="uiverse-btn" onclick="cambiarDemo('pointerlock.html')">
-                        <span>PointerLock</span>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </nav>
 
-    <main class="flex-grow-1 position-relative">
-        <iframe id="visor3D" src="minecraft.html" title="Visor 3D Three.js"></iframe>
-    </main>
+<body>
 
-    <footer class="bg-black text-white text-center py-3 mt-auto shadow-lg">
-        <div class="container">
-            <small class="text-secondary">
-                Desarrollado por: <span class="text-light fw-bold">Tu Nombre Completo</span> | Programación Web | 2026
-            </small>
-        </div>
-    </footer>
+<!-- =========================
+NAVBAR
+========================= -->
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        function cambiarDemo(url) {
-            const iframe = document.getElementById('visor3D');
-            iframe.src = url;
-            
-            // Opcional: Quitar el foco del botón después de hacer clic para evitar comportamientos raros con el teclado en el canvas 3D
-            document.activeElement.blur(); 
-        }
-    </script>
+<nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
+
+<div class="container-fluid px-4">
+
+<span class="navbar-brand fw-bold text-uppercase">
+
+Demos 3D
+
+</span>
+
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+<span class="navbar-toggler-icon"></span>
+
+</button>
+
+<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+
+<div class="navbar-nav gap-3">
+
+<button class="uiverse-btn" onclick="cambiarDemo('minecraft.html')">
+
+Minecraft
+
+</button>
+
+<button class="uiverse-btn" onclick="cambiarDemo('map.html')">
+
+Map Controls
+
+</button>
+
+<button class="uiverse-btn" onclick="cambiarDemo('orbit.html')">
+
+Orbit Controls
+
+</button>
+
+<button class="uiverse-btn" onclick="cambiarDemo('pointerlock.html')">
+
+Pointer Lock
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</nav>
+
+
+<!-- =========================
+VISOR THREEJS
+========================= -->
+
+<main class="flex-grow-1 position-relative">
+
+<iframe
+id="visor3D"
+src="minecraft.html"
+title="Visor 3D Three.js"
+loading="lazy">
+
+</iframe>
+
+</main>
+
+
+<!-- =========================
+FOOTER
+========================= -->
+
+<footer>
+
+<p>
+
+Desarrollado por <strong>Álvaro Madrid Morales</strong>  
+ITICS - Instituto Tecnológico de Pachuca | 2026
+
+</p>
+
+</footer>
+
+
+<!-- =========================
+BOOTSTRAP
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- =========================
+CAMBIO DE DEMO
+========================= -->
+
+<script>
+
+function cambiarDemo(url){
+
+const iframe = document.getElementById("visor3D");
+
+iframe.src = url;
+
+/* evita conflictos de foco con el canvas */
+
+document.activeElement.blur();
+
+}
+
+</script>
+
 </body>
+
 </html>

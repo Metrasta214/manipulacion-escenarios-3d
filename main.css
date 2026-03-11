@@ -1,1039 +1,375 @@
-/* --- Ajustes Generales --- */
-body {
-    margin: 0;
-    overflow: hidden; /* Evita scrollbars en la ventana principal */
-}
+/* =========================
+RESET
+========================= */
 
-/* El iframe ocupa todo el espacio de la etiqueta main */
-#visor3D {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
-    background-color: #111; /* Color de fondo mientras carga */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-/* --- Botones UIverse (Adaptación) --- */
-/* Inspirado en diseños interactivos y modernos de uiverse.io */
-.uiverse-btn {
-    position: relative;
-    padding: 10px 20px;
-    border-radius: 7px;
-    border: 1px solid rgb(61, 106, 255);
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    background: transparent;
-    color: #fff;
-    overflow: hidden;
-    box-shadow: 0 0 0 0 transparent;
-    transition: all 0.2s ease-in;
-    cursor: pointer;
-}
+/* =========================
+BODY
+========================= */
 
-.uiverse-btn:hover {
-    background: rgb(61, 106, 255);
-    box-shadow: 0 0 20px 5px rgba(61, 106, 255, 0.5);
-    transition: all 0.2s ease-out;
+body{
+background:#0f0f0f;
+color:white;
+min-height:100vh;
+display:flex;
+flex-direction:column;
 }
 
-.uiverse-btn:hover::before {
-    animation: sh02 0.5s 0s linear;
-}
+/* =========================
+NAVBAR
+========================= */
 
-.uiverse-btn::before {
-    content: '';
-    display: block;
-    width: 0px;
-    height: 86%;
-    position: absolute;
-    top: 7%;
-    left: 0%;
-    opacity: 0;
-    background: #fff;
-    box-shadow: 0 0 50px 30px #fff;
-    transform: skewX(-20deg);
+.navbar{
+padding:20px;
+text-align:center;
+border-bottom:1px solid #222;
+background:#0f0f0f;
 }
 
-@keyframes sh02 {
-    from {
-        opacity: 0;
-        left: 0%;
-    }
-    50% {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-        left: 100%;
-    }
+.navbar h1{
+font-size:22px;
+font-weight:600;
+letter-spacing:1px;
 }
-
-.uiverse-btn:active {
-    box-shadow: 0 0 0 0 transparent;
-    transition: box-shadow 0.2s ease-in;
-    transform: scale(0.95);
-}
-
-
-:root {
-	color-scheme: light dark;
-}
-
-[hidden] {
-	display: none !important;
-}
-
-body {
-	font-family: Helvetica, Arial, sans-serif;
-	font-size: 14px;
-	margin: 0;
-	overflow: hidden;
-}
-
-hr {
-	border: 0;
-	border-top: 1px solid #ccc;
-}
-
-.Button {
-	position: relative;
-}
-
-.Input {
-	vertical-align: middle;
-}
-
-	.Input[type="color"]::-webkit-color-swatch-wrapper {
-		padding: 0;
-	}
-	.Input[type="color"]::-webkit-color-swatch {
-		border: none;
-	}
-
-.TextArea {
-	tab-size: 4;
-	white-space: pre;
-	word-wrap: normal;
-}
-
-	.TextArea.success {
-		border-color: #8b8 !important;
-	}
 
-	.TextArea.fail {
-		border-color: #f00 !important;
-		background-color: rgba(255,0,0,0.05);
-	}
+/* =========================
+CARDS CONTAINER
+========================= */
 
-.TextArea, .Input { outline: none; } /* osx */
+.cards-container{
 
-.Panel {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
+display:grid;
 
-	/* No support for these yet */
-	-o-user-select: none;
-	user-select: none;
-}
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
 
-.TabbedPanel {
-	-moz-user-select: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-
-	/* No support for these yet */
-	-o-user-select: none;
-	user-select: none;
-	position: relative;
-	display: block;
-	width: 100%;
-	min-width: 335px;
-}
+gap:30px;
 
-.TabbedPanel .Tabs {
-	position: relative;
-	z-index: 1; /** Above .Panels **/
-	display: block;
-	width: 100%;
-	white-space: pre;
-	overflow: hidden;
-	overflow-x: auto;
-}
+padding:40px;
 
-	.TabbedPanel .Tabs::-webkit-scrollbar {
-		height: 5px;
-		background: #eee;
-	}
-	.TabbedPanel .Tabs::-webkit-scrollbar-thumb {
-		background: #08f3;
-	}
-	.TabbedPanel .Tabs:hover::-webkit-scrollbar-thumb {
-		background: #08f;
-		cursor: ew-resize;
-	}
+max-width:1200px;
 
-	.TabbedPanel .Tabs .Tab {
-		padding: 10px 9px;
-		text-transform: uppercase;
-	}
+width:100%;
 
-	.TabbedPanel .Panels {
-		position: absolute;
-		top: 36px;
-		display: block;
-		width: 100%;
-	}
+margin:auto;
 
-/* Listbox */
-.Listbox {
-	color: #444;
-	background-color: #fff;
-	padding: 0;
-	width: 100%;
-	min-height: 180px;
-	font-size: 12px;
-	cursor: default;
-	overflow: auto;
 }
 
-.Listbox .ListboxItem {
-	padding: 4px;
-	color: #666;
-	white-space: nowrap;
-}
+/* =========================
+CARD UIVERSE STYLE
+========================= */
 
-.Listbox .ListboxItem:hover {
-	background-color: rgba(0, 0, 0, 0.02);
-}
+.card{
 
-.Listbox .ListboxItem.active {
-	background-color: rgba(0, 0, 0, 0.04);
-}
+background:#161616;
 
-/* CodeMirror */
+border-radius:14px;
 
-.CodeMirror {
+padding:28px;
 
-	position: absolute !important;
-	top: 37px;
-	width: 100% !important;
-	height: calc(100% - 37px) !important;
+border:1px solid #222;
 
-}
+display:flex;
 
-	.CodeMirror .errorLine {
+flex-direction:column;
 
-		background: rgba(255,0,0,0.25);
+gap:18px;
 
-	}
+transition:all .3s ease;
 
-	.CodeMirror .esprima-error {
+}
 
-		color: #f00;
-		text-align: right;
-		padding: 0 20px;
+.card:hover{
 
-	}
+transform:translateY(-8px);
 
-/* outliner */
+border:1px solid #00ffc8;
 
-#outliner .opener {
-	display: inline-block;
-	width: 14px;
-	height: 14px;
-	margin: 0px 4px;
-	vertical-align: top;
-	text-align: center;
+box-shadow:0 10px 25px rgba(0,255,200,0.1);
+
 }
 
-	#outliner .opener.open:after {
-		content: '−';
-	}
+/* TITULO CARD */
 
-	#outliner .opener.closed:after {
-		content: '+';
-	}
+.card h2{
 
-#outliner .option {
+font-size:20px;
 
-	border: 1px solid transparent;
+font-weight:600;
 
 }
 
-#outliner .option.drag {
+/* TEXTO CARD */
 
-	border: 1px dashed #999;
+.card p{
 
-}
+font-size:14px;
 
-#outliner .option.dragTop {
+line-height:1.5;
 
-	border-top: 1px dashed #999;
+color:#cfcfcf;
 
 }
 
-#outliner .option.dragBottom {
+/* =========================
+UIVERSE BUTTON
+========================= */
 
-	border-bottom: 1px dashed #999;
+.uiverse-btn{
 
-}
+position:relative;
 
-#outliner .type {
-	display: inline-block;
-	width: 14px;
-	height: 14px;
-	color: #ddd;
-	text-align: center;
-}
+padding:12px 22px;
 
-#outliner .type:after {
-	content: '●';
-}
+border-radius:8px;
 
-/* */
+border:1px solid rgb(61,106,255);
 
-#outliner .Scene {
-	color: #8888dd;
-}
+font-size:13px;
 
-#outliner .Camera {
-	color: #dd8888;
-}
+text-transform:uppercase;
 
-#outliner .Light {
-	color: #dddd88;
-}
+font-weight:600;
 
-/* */
+letter-spacing:1px;
 
-#outliner .Object3D {
-	color: #aaaaee;
-}
+background:transparent;
 
-#outliner .Mesh {
-	color: #8888ee;
-}
+color:#fff;
 
-#outliner .Line {
-	color: #88ee88;
-}
+overflow:hidden;
 
-#outliner .LineSegments {
-	color: #88ee88;
-}
+transition:all 0.2s ease-in;
 
-#outliner .Points {
-	color: #ee8888;
-}
+cursor:pointer;
 
-/* */
+width:fit-content;
 
-#outliner .Geometry {
-	color: #aaeeaa;
 }
 
-#outliner .Material {
-	color: #eeaaee;
-}
+/* hover */
 
-/* */
+.uiverse-btn:hover{
 
-#outliner .Script:after {
-	content: '◎'
-}
+background:rgb(61,106,255);
 
-/*  */
+box-shadow:0 0 20px rgba(61,106,255,0.5);
 
-.Button {
-	color: #555;
-	background-color: #ddd;
-	border: 0px;
-	margin: 0px; /* GNOME Web */
-	padding: 5px 8px;
-	font-size: 12px;
-	text-transform: uppercase;
-	cursor: pointer;
-	outline: none;
 }
-
-	.Button:hover {
-		background-color: #fff;
-	}
 
-	.Button.selected {
-		background-color: #fff;
-	}
+/* efecto brillo */
 
-.Input, .TextArea {
-	border: 1px solid transparent;
-	color: #444;
-}
-
-.Input.Number {
-	color: #08f!important;
-	font-size: 12px;
-	border: 0px;
-	padding: 2px;
-}
+.uiverse-btn::before{
 
-.Select {
-	color: #666;
-	background-color: #ddd;
-	border: 3px solid #ddd;
-	border-radius: 4px;
-	text-transform: uppercase;
-	cursor: pointer;
-	outline: none;
-}
+content:'';
 
-	.Select:hover {
-		background-color: #fff;
-	}
+display:block;
 
-/* UI */
+width:0px;
 
-#resizer {
-	position: absolute;
-	z-index: 2; /* Above #sidebar */
-	top: 36px;
-	right: 350px;
-	width: 5px;
-	bottom: 0px;
-	transform: translatex(2.5px);
-	cursor: col-resize;
-}
+height:86%;
 
-	#resizer:hover {
-		background-color: #08f8;
-		transition-property: background-color;
-		transition-delay: 0.1s;
-		transition-duration: 0.2s;
-	}
+position:absolute;
 
-	#resizer:active {
-		background-color: #08f;
-	}
+top:7%;
 
-#viewport {
-	position: absolute;
-	top: 36px;
-	left: 0;
-	right: 350px;
-	bottom: 36px;
-}
+left:0%;
 
-	#viewport .Text {
-		text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
-		pointer-events: none;
-	}
+opacity:0;
 
-#animation {
-	position: absolute;
-	left: 0;
-	right: 350px;
-	bottom: 0;
-	height: 36px;
-	background: #eee;
-	border-top: 1px solid #ccc;
-	display: none;
-	flex-direction: row;
-}
+background:#fff;
 
-	#animation .Panel {
-		color: #888;
-	}
+box-shadow:0 0 50px 30px #fff;
 
-	#animation input[type="range"] {
-		accent-color: #08f;
-	}
+transform:skewX(-20deg);
 
-#animation-resizer {
-	position: absolute;
-	left: 0;
-	right: 350px;
-	bottom: 36px;
-	height: 5px;
-	transform: translateY(2.5px);
-	cursor: row-resize;
-	z-index: 2;
 }
 
-	#animation-resizer:hover {
-		background-color: #08f8;
-		transition-property: background-color;
-		transition-delay: 0.1s;
-		transition-duration: 0.2s;
-	}
+.uiverse-btn:hover::before{
 
-	#animation-resizer:active {
-		background-color: #08f;
-	}
+animation:shine 0.5s linear;
 
-#script {
-	position: absolute;
-	top: 36px;
-	left: 0;
-	right: 350px;
-	bottom: 0;
-	opacity: 0.9;
 }
 
-#player {
-	position: absolute;
-	top: 36px;
-	left: 0;
-	right: 350px;
-	bottom: 0;
-}
+@keyframes shine{
 
-#menubar {
-	position: absolute;
-	width: 100%;
-	height: 36px;
-	background: #eee;
-	padding: 0;
-	margin: 0;
-	right: 0;
-	top: 0;
+0%{
+opacity:0;
+left:0%;
 }
-
-	#menubar .menu {
-		float: left;
-		cursor: pointer;
-		padding-right: 8px;
-	}
-
-	#menubar .menu.right {
-		float: right;
-		cursor: auto;
-		padding-right: 0;
-		text-align: right;
-	}
-
-		#menubar .menu .title {
-			display: inline-block;
-			color: #888;
-			margin: 0;
-			padding: 10px;
-			line-height: 16px;
-		}
-
-		#menubar .menu .key {
-			position: absolute;
-			right: 10px;
-			color: #ccc;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			font-size: 9px;
-			line-height: normal;
-			padding: 2px 4px;
-			right: 10px;
-			pointer-events: none;
-		}
-
-		#menubar .menu .options {
-			position: fixed;
-			z-index: 1; /* higher than resizer */
-			display: none;
-			padding: 5px 0;
-			background: #eee;
-			min-width: 150px;
-			max-height: calc(100vh - 80px);
-			overflow: auto;
-		}
-
-		#menubar .menu:hover .options {
-			display: block;
-			box-shadow: 0 10px 10px -5px #00000033;
-		}
-
-			#menubar .menu .options hr {
-				border-color: #ddd;
-			}
 
-			#menubar .menu .options .option {
-				color: #666;
-				background-color: transparent;
-				padding: 5px 10px;
-				line-height: 25px;
-				margin: 0 !important;
-			}
-
-				#menubar .menu .options .option:hover {
-					color: #fff;
-					background-color: #08f;
-				}
-
-				#menubar .menu .options .option:not(.submenu-title):active {
-					color: #666;
-					background: transparent;
-				}
-
-				#menubar .menu .options .option.toggle::before {
-
-					content: ' ';
-					display: inline-block;
-					width: 16px;
-
-				}
-
-				#menubar .menu .options .option.toggle-on::before {
-
-					content: '✔';
-					font-size: 12px;
-
-				}
-
-				#menubar .submenu-title::after {
-					content: '⏵';
-					float: right;
-				}
-
-		#menubar .menu .options .inactive {
-			color: #bbb;
-			background-color: transparent;
-			padding: 5px 10px;
-			line-height: 25px;
-			margin: 0 !important;
-			cursor: not-allowed;
-		}
-
-		
-
-#sidebar {
-	position: absolute;
-	right: 0;
-	top: 36px;
-	bottom: 0;
-	width: 350px;
-	background: #eee;
-	overflow: auto;
-	overflow-x: hidden;
+50%{
+opacity:1;
 }
-
-	#sidebar .Panel {
-		color: #888;
-		padding: 10px;
-		border-top: 1px solid #ccc;
-	}
-
-	#sidebar .Panel.collapsed {
-		margin-bottom: 0;
-	}
-
-	#sidebar .Row {
-		display: flex;
-		align-items: center;
-		min-height: 24px;
-		margin-bottom: 10px;
-	}
-
-	#sidebar .Row .Label {
 
-		width: 120px;
-
-	}
-
-#tabs {
-	background-color: #ddd;
-	border-top: 1px solid #ccc;
+100%{
+opacity:0;
+left:100%;
 }
-
-	#tabs span {
-		color: #aaa;
-		border-right: 1px solid #ccc;
-		padding: 10px;
-	}
 
-	#tabs span.selected {
-		color: #888;
-		background-color: #eee;
-	}
-
-#toolbar {
-	position: absolute;
-	left: calc(50% - 175px);
-	transform: translateX(-50%);
-	bottom: 56px;
-	height: 32px;
-	background: #eee;
-	text-align: center;
-	display: flex;
-	align-items: center;
-	gap: 2px;
-	border-radius: 6px;
-	border: 3px solid #eee;
-	overflow: hidden;
 }
 
-	#toolbar .Button, #toolbar .Input {
-		height: 32px;
-		border-radius: 4px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
+.uiverse-btn:active{
 
-		#toolbar .Button img {
-			width: 16px;
-			opacity: 0.5;
-		}
+transform:scale(0.95);
 
-.Outliner {
-	color: #444;
-	background-color: #fff;
-	padding: 0;
-	width: 100%;
-	height: 180px;
-	font-size: 12px;
-	cursor: default;
-	overflow: auto;
-	resize: vertical;
-	outline: none !important;
 }
-
-	.Outliner .option {
-		padding: 4px;
-		color: #666;
-		white-space: nowrap;
-	}
-
-	.Outliner .option:hover {
-		background-color: rgba(0,0,0,0.02);
-	}
 
-	.Outliner .option.active {
-		background-color: rgba(0,0,0,0.04);
-	}
+/* =========================
+FOOTER
+========================= */
 
+footer{
 
-.TabbedPanel .Tabs {
-	background-color: #ddd;
-	border-top: 1px solid #ccc;
-}
+margin-top:auto;
 
-	.TabbedPanel .Tab {
-		color: #aaa;
-		border-right: 1px solid #ccc;
-	}
+text-align:center;
 
-	.TabbedPanel .Tab.selected {
-		color: #888;
-		background-color: #eee;
-	}
+padding:20px;
 
-.Listbox {
-	color: #444;
-	background-color: #fff;
-}
+border-top:1px solid #222;
 
-.Panel {
-	color: #888;
-}
+font-size:14px;
 
-/* */
+color:#aaa;
 
-@media all and ( max-width: 600px ) {
+background:#0f0f0f;
 
-	#resizer {
-		display: none;
-	}
+}
 
-	#animation-resizer {
-		display: none;
-	}
+/* =========================
+VISOR THREEJS
+========================= */
 
-	#menubar .menu .options {
-		max-height: calc(100% - 80px);
-	}
+#visor3D{
 
-	#menubar .menu.right {
-		display: none;
-	}
+position:absolute;
 
-	#viewport {
-		left: 0;
-		right: 0;
-		top: 36px;
-		height: calc(100% - 356px);
-	}
+top:0;
 
-	#script {
-		left: 0;
-		right: 0;
-		top: 36px;
-		height: calc(100% - 356px);
-	}
+left:0;
 
-	#player {
-		left: 0;
-		right: 0;
-		top: 36px;
-		height: calc(100% - 356px);
-	}
+width:100%;
 
-	#sidebar {
-		left: 0;
-		width: 100%;
-		top: calc(100% - 320px);
-		bottom: 0;
-	}
+height:100%;
 
-	#toolbar {
-		left: 50%;
-		transform: translateX(-50%);
-		bottom: 330px;
-	}
+border:none;
 
-	#animation {
-		display: none !important;
-	}
+background:#111;
 
 }
-
-/* DARK MODE */
 
-@media ( prefers-color-scheme: dark ) {
+/* =========================
+CONTENEDOR THREEJS
+========================= */
 
-	.Button {
-		color: #aaa;
-		background-color: #222;
-	}
+#container3D{
 
-		.Button:hover {
-			color: #ccc;
-			background-color: #444;
-		}
+width:100%;
 
-		.Button.selected {
-			color: #fff;
-			background-color: #08f;
-		}
+height:100vh;
 
-	.Input, .TextArea {
-		background-color: #222;
-		border: 1px solid transparent;
-		color: #888;
-	}
-
-	.Select {
-		color: #aaa;
-		background-color: #222;
-		border-color: #222;
-	}
-
-		.Select:hover {
-			color: #ccc;
-			background-color: #444;
-		}
-
-	/* UI */
-
-	#menubar {
-		background: #111;
-	}
+}
 
-			#menubar .menu .key {
-				color: #444;
-				border-color: #444;
-			}
+/* =========================
+BOTON REGRESAR
+========================= */
 
-			#menubar .menu .options {
-				background: #111;
-			}
+.back-btn{
 
-				#menubar .menu .options hr {
-					border-color: #222;
-				}
+position:absolute;
 
-				#menubar .menu .options .option {
-					color: #888;
-				}
+top:20px;
 
-			#menubar .menu .options .inactive {
-				color: #444;
-			}
+left:20px;
 
-	#sidebar {
-		background-color: #111;
-	}
+z-index:10;
 
-		#sidebar .Panel {
-			border-top: 1px solid #222;
-		}
+}
 
-		#sidebar .Panel.Material canvas {
-			border: solid 1px #5A5A5A;
-		}
+/* =========================
+RESPONSIVE
+========================= */
 
-	#animation {
-		background-color: #111;
-		border-top: 1px solid #222;
-	}
+@media(max-width:900px){
 
-		#animation .Panel {
-			border-bottom: 1px solid #222;
-		}
+.cards-container{
 
-		#animation .timeline-container {
-			background: rgba(255, 255, 255, 0.05);
-		}
+padding:30px;
 
-	#tabs {
-		background-color: #1b1b1b;
-		border-top: 1px solid #222;
-	}
+gap:20px;
 
-		#tabs span {
-			color: #555;
-			border-right: 1px solid #222;
-		}
+}
 
-		#tabs span.selected {
-			background-color: #111;
-		}
+}
 
-	#toolbar {
-		background-color: #111;
-		border-color: #111;
-	}
+@media(max-width:600px){
 
-		#toolbar img {
-			filter: invert(1);
-		}
+.navbar h1{
 
-	.Outliner {
-		background: #222;
-	}
+font-size:18px;
 
-		.Outliner .option {
-			color: #999;
-		}
+}
 
-		.Outliner .option:hover {
-			background-color: rgba(21,60,94,0.5);
-		}
+.cards-container{
 
-		.Outliner .option.active {
-			background-color: rgba(21,60,94,1);
-		}
+grid-template-columns:1fr;
 
-	.TabbedPanel .Tabs {
-		background-color: #1b1b1b;
-		border-top: 1px solid #222;
-	}
+padding:20px;
 
-		.TabbedPanel .Tabs::-webkit-scrollbar {
-			background: #111;
-		}
+}
 
-		.TabbedPanel .Tab {
-			color: #555;
-			border-right: 1px solid #222;
-		}
+.card{
 
-		.TabbedPanel .Tab.selected {
-			color: #888;
-			background-color: #111;
-		}
+padding:22px;
 
-	.Listbox {
-		color: #888;
-		background: #222;
-	}
+}
 
-	.Listbox .ListboxItem:hover {
-		background-color: rgba(21,60,94,0.5);
-	}
+.card h2{
 
-	.Listbox .ListboxItem.active {
-		background-color: rgba(21,60,94,1);
-	}
+font-size:18px;
 
 }
 
-/* Dialog */
+.card p{
 
-.Dialog {
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: 100;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
+font-size:13px;
 
-.Dialog-background {
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background: rgba(0, 0, 0, 0.5);
 }
 
-.Dialog-content {
-	position: relative;
-	background: #eee;
-	min-width: 300px;
-	max-width: 90%;
-	max-height: 90%;
-	overflow: auto;
 }
 
-.Dialog-title {
-	padding: 10px 15px;
-	color: #666;
-	text-transform: uppercase;
-}
+/* =========================
+SCROLLBAR MINIMAL
+========================= */
 
-.Dialog-body {
-	padding: 15px;
-}
+::-webkit-scrollbar{
 
-.Dialog-body .Row {
-	display: flex;
-	align-items: center;
-	min-height: 24px;
-	margin-bottom: 10px;
-}
+width:8px;
 
-.Dialog-body .Row .Label {
-	width: 120px;
-	color: #888;
 }
 
-.Dialog-buttons {
-	display: flex;
-	justify-content: flex-end;
-	margin-top: 15px;
-}
+::-webkit-scrollbar-track{
 
-@media ( prefers-color-scheme: dark ) {
+background:#111;
 
-	.Dialog-content {
-		background: #111;
-	}
+}
 
-	.Dialog-title {
-		color: #888;
-	}
+::-webkit-scrollbar-thumb{
 
+background:#333;
 
+border-radius:10px;
 
 }
+
+::-webkit-scrollbar-thumb:hover{
 
-/* Temporary Chrome fix (#24794) */
+background:#555;
 
-[draggable="true"] {
-	transform: translate(0, 0);
-	z-index: 0;
 }
