@@ -4,142 +4,120 @@
 <head>
 
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Portafolio Three.js - Entornos 3D</title>
+<title>Demos Three.js</title>
 
-<!-- FAVICON -->
-<link rel="icon" type="image/png" href="./assets/favicon.png">
+<link rel="icon" href="favicon.png">
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- CSS principal -->
 <link rel="stylesheet" href="main.css">
 
 </head>
 
-
 <body>
 
-<!-- =========================
-NAVBAR
-========================= -->
-
-<nav class="navbar navbar-expand-lg navbar-dark bg-black shadow-sm">
-
-<div class="container-fluid px-4">
-
-<span class="navbar-brand fw-bold text-uppercase">
-
-Demos 3D
-
-</span>
-
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-
-<span class="navbar-toggler-icon"></span>
-
-</button>
-
-<div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-
-<div class="navbar-nav gap-3">
-
-<button class="uiverse-btn" onclick="cambiarDemo('minecraft.html')">
-
-Minecraft
-
-</button>
-
-<button class="uiverse-btn" onclick="cambiarDemo('map.html')">
-
-Map Controls
-
-</button>
-
-<button class="uiverse-btn" onclick="cambiarDemo('orbit.html')">
-
-Orbit Controls
-
-</button>
-
-<button class="uiverse-btn" onclick="cambiarDemo('pointerlock.html')">
-
-Pointer Lock
-
-</button>
-
-</div>
-
-</div>
-
-</div>
-
+<nav class="navbar">
+<h1>Three.js Demos</h1>
 </nav>
 
 
-<!-- =========================
-VISOR THREEJS
-========================= -->
+<section class="cards-container">
 
-<main class="flex-grow-1 position-relative">
+<!-- Minecraft -->
 
-<iframe
-id="visor3D"
-src="minecraft.html"
-title="Visor 3D Three.js"
-loading="lazy">
+<div class="card">
 
-</iframe>
+<div class="preview">
+<iframe src="minecraft.html"></iframe>
+</div>
 
-</main>
+<h2>Minecraft Geometry</h2>
+
+<p>
+Geometría voxel inspirada en Minecraft creada con Three.js.
+</p>
+
+<a href="minecraft.html" class="uiverse-btn">
+Abrir demo
+</a>
+
+</div>
 
 
-<!-- =========================
-FOOTER
-========================= -->
+<!-- Map -->
+
+<div class="card">
+
+<div class="preview">
+<iframe src="map.html"></iframe>
+</div>
+
+<h2>Map Controls</h2>
+
+<p>
+Navegación de cámara similar a aplicaciones de mapas.
+</p>
+
+<a href="map.html" class="uiverse-btn">
+Abrir demo
+</a>
+
+</div>
+
+
+<!-- Orbit -->
+
+<div class="card">
+
+<div class="preview">
+<iframe src="orbit.html"></iframe>
+</div>
+
+<h2>Orbit Controls</h2>
+
+<p>
+Permite rotar la cámara alrededor de objetos 3D.
+</p>
+
+<a href="orbit.html" class="uiverse-btn">
+Abrir demo
+</a>
+
+</div>
+
+
+<!-- PointerLock -->
+
+<div class="card">
+
+<div class="preview">
+<iframe src="pointerlock.html"></iframe>
+</div>
+
+<h2>Pointer Lock</h2>
+
+<p>
+Control de movimiento estilo videojuego usando el mouse.
+</p>
+
+<a href="pointerlock.html" class="uiverse-btn">
+Abrir demo
+</a>
+
+</div>
+
+
+</section>
+
 
 <footer>
 
 <p>
-
-Desarrollado por <strong>Álvaro Madrid Morales</strong>  
-ITICS - Instituto Tecnológico de Pachuca | 2026
-
+Desarrollado por <strong>Álvaro Madrid Morales</strong><br>
+ITICS | Instituto Tecnológico de Pachuca | 2026
 </p>
 
 </footer>
 
-
-<!-- =========================
-BOOTSTRAP
-========================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<!-- =========================
-CAMBIO DE DEMO
-========================= -->
-
-<script>
-
-function cambiarDemo(url){
-
-const iframe = document.getElementById("visor3D");
-
-iframe.src = url;
-
-/* evita conflictos de foco con el canvas */
-
-document.activeElement.blur();
-
-}
-
-</script>
-
 </body>
-
 </html>

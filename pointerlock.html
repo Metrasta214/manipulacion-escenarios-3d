@@ -29,6 +29,13 @@
 		</style>
 	</head>
 	<body>
+
+    <a href="index.html" class="back-btn uiverse-btn">← Regresar</a>
+		<script>
+		if (window.self !== window.top) {
+  	document.querySelector(".back-btn").style.display = "none";
+		}
+		</script>
 		<div id="blocker">
 			<div id="instructions">
 				<p style="font-size:36px">

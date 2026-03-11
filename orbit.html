@@ -18,11 +18,14 @@
 	</head>
 
 	<body>
-		<div id="info">
-			<a href="https://threejs.org" target="_blank" rel="noopener">three.js</a> - orbit controls
-		</div>
+		
 
-		<script type="importmap">
+  <a href="index.html" class="back-btn uiverse-btn">← Regresar</a>
+		<script>
+		if (window.self !== window.top) {
+  	document.querySelector(".back-btn").style.display = "none";
+		}
+		</script>		<script type="importmap">
 			{
 				"imports": {
 					"three": "../build/three.module.js",
